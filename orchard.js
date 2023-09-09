@@ -300,34 +300,31 @@ console.log(`Pink Apples: Pounds Harvested: ${pinkPounds}`);
 
 // CODE HERE
 
-let fujiProfit = 0;
-let galaProfit = 0;
-let pinkProfit = 0;
+let fujiProfit = [];
+let galaProfit = [];
+let pinkProfit = [];
 
 // Create a couple arrays containing data we will need for each apple type
 let allProfit = [fujiProfit, galaProfit, pinkProfit];
 let allPrices = [fujiPrice, galaPrice, pinkPrice];
 
-// Using a for loop, calculate the profit of each Apple type one at a time
+// Using a for loop, and referencing the allPounds variable we created in Problem 5, we will calculate the profit of each apple type, one at a time
 for (let i = 0; i < allPounds.length; i++) {
-  // Variable to store the total profit of each apple type
-  let totalProfit = 0;
-
-  // Using a second loop, and referencing the allPounts variable we created in Problem 5, as well as the we will calculate the number of pounds harvested per apple type
-  for (let dayOfHarvest = 0; dayOfHarvest < allTons[i].length; dayOfHarvest++) {
-    // Look up how many tons were harvested that day
-    let tons = allTons[i][dayOfHarvest];
-
-    // calculate how many pounds were harvested that day
-    let pounds = tons * poundsPerTon;
-
-    // record the day to totalPounds
-    // totalPounds += pounds;
-  }
+  // Calculate the total profit of the current apple type
+  let totalProfit = allPounds[i][0] * allPrices[i];
 
   // Record the data
-  //   allPounds[i] = totalPounds;
+  allProfit[i][0] = totalProfit;
 }
+
+// return the requested solution
+console.log(allProfit);
+
+// return the plain english solution
+console.log(`Fiji Apples: Profit: $${fujiProfit}`);
+console.log(`Gala Apples: Profit: $${galaProfit}`);
+console.log(`Pink Apples: Profit: $${pinkProfit}`);
+
 ///-------------///
 
 // PROBLEM 7
@@ -341,3 +338,17 @@ for (let i = 0; i < allPounds.length; i++) {
 */
 
 // CODE HERE
+
+let totalProfit = 0;
+
+// Using a for loop, we'll calculate the total profit by looking at the profit of each apple type, one at a time
+for (i = 0; i < allProfit.length; i++) {
+  //  Add the profit of the current apple type to the total profit
+  totalProfit += allProfit[i][0];
+}
+
+// return the requested solution
+console.log(totalProfit);
+
+// return the plain english solution
+console.log(`Total Profit: $${totalProfit}`);
