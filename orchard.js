@@ -241,10 +241,10 @@ console.log(`Pink Apples: Tons Harvested each Day: ${pinkTons}`);
 */
 
 // CODE HERE
-
-let fujiPounds = 0;
-let galaPounds = 0;
-let pinkPounds = 0;
+// Making these variables arrays so I can change them within the allPounds array that will be created below
+let fujiPounds = [];
+let galaPounds = [];
+let pinkPounds = [];
 
 poundsPerTon = 2000;
 
@@ -269,13 +269,8 @@ for (let i = 0; i < allPounds.length; i++) {
   }
 
   // Record the data
-  allPounds[i] = totalPounds;
+  allPounds[i][0] = totalPounds;
 }
-
-// The directions specifically direct that the data be stored in the variables given above.
-fujiPounds = allPounds[0];
-galaPounds = allPounds[1];
-pinkPounds = allPounds[2];
 
 // return the requested solution
 console.log(allPounds);
@@ -309,9 +304,30 @@ let fujiProfit = 0;
 let galaProfit = 0;
 let pinkProfit = 0;
 
-// Create an array containing each apple type
+// Create a couple arrays containing data we will need for each apple type
 let allProfit = [fujiProfit, galaProfit, pinkProfit];
+let allPrices = [fujiPrice, galaPrice, pinkPrice];
 
+// Using a for loop, calculate the profit of each Apple type one at a time
+for (let i = 0; i < allPounds.length; i++) {
+  // Variable to store the total profit of each apple type
+  let totalProfit = 0;
+
+  // Using a second loop, and referencing the allPounts variable we created in Problem 5, as well as the we will calculate the number of pounds harvested per apple type
+  for (let dayOfHarvest = 0; dayOfHarvest < allTons[i].length; dayOfHarvest++) {
+    // Look up how many tons were harvested that day
+    let tons = allTons[i][dayOfHarvest];
+
+    // calculate how many pounds were harvested that day
+    let pounds = tons * poundsPerTon;
+
+    // record the day to totalPounds
+    // totalPounds += pounds;
+  }
+
+  // Record the data
+  //   allPounds[i] = totalPounds;
+}
 ///-------------///
 
 // PROBLEM 7
