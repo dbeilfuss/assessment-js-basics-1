@@ -27,15 +27,17 @@
     in cents. 
 */
 
-const fujiAcres = [2, 3, 3, 2, 2, 2, 1]
-const galaAcres = [5, 2, 4, 3, 6, 2, 4]
-const pinkAcres = [1, 5, 4, 2, 1, 5, 4]
+// Apple Acres Picked per Day of Week
+const fujiAcres = [2, 3, 3, 2, 2, 2, 1];
+const galaAcres = [5, 2, 4, 3, 6, 2, 4];
+const pinkAcres = [1, 5, 4, 2, 1, 5, 4];
 
-const fujiPrice = .89 
-const galaPrice = .64
-const pinkPrice = .55
+// Apple Price per Pound
+const fujiPrice = 0.89;
+const galaPrice = 0.64;
+const pinkPrice = 0.55;
 
-
+///-------------///
 
 // PROBLEM 1
 
@@ -51,9 +53,28 @@ const pinkPrice = .55
 
 // CODE HERE
 
+let totalAcres = 0;
 
+// This extra variable is an array, populated with all the Apple Acre Arrays.
+// This will allow us to quickly reference all apple acre types at once.
+let allAcres = [fujiAcres, galaAcres, pinkAcres];
 
+// This loop adds up the acres
+// Using a for loop, we look at each Apple type one at a time
+for (let i = 0; i < allAcres.length; i++) {
+  // Using a second loop, we add we add the acres from each day to totalAcres
+  for (let dayOfWeek = 0; dayOfWeek < allAcres[i].length; dayOfWeek++) {
+    totalAcres = totalAcres + allAcres[i][dayOfWeek];
+  }
+}
 
+// return the requested solution
+console.log(totalAcres);
+
+// return the plain english solution
+console.log(`There were ${totalAcres} total acres of apples picked this week.`);
+
+///-------------///
 
 // PROBLEM 2
 
@@ -69,9 +90,16 @@ const pinkPrice = .55
 
 // CODE HERE
 
+// Calculate the average acres - we simply devide the totalAcres by 7 days a week
+let averageDailyAcres = totalAcres / 7;
 
+// return the requested solution
+console.log(averageDailyAcres);
 
+// return the plain english solution
+console.log(`An average of ${averageDailyAcres} acres were picked per day.`);
 
+///-------------///
 
 // PROBLEM 3
 
@@ -102,12 +130,10 @@ const pinkPrice = .55
 
 */
 
-let acresLeft = 174 
-let days = 0
+let acresLeft = 174;
+let days = 0;
 
 // CODE HERE
-
-
 
 // PROBLEM 4
 
@@ -139,11 +165,6 @@ let days = 0
 // let galaTons =
 // let pinkTons =
 
-
-
-
-
-
 // PROBLEM 5
 
 /*
@@ -160,16 +181,11 @@ let days = 0
     Hint: there are 2000 pounds in a ton.
 */
 
-// CODE HERE 
+// CODE HERE
 
 // let fujiPounds =
 // let galaPounds =
 // let pinkPounds =
-
-
-
-
-
 
 // PROBLEM 6
 
@@ -192,11 +208,6 @@ let days = 0
 // let fujiProfit =
 // let galaProfit =
 // let pinkProfit =
-
-
-
-
-
 
 // PROBLEM 7
 
