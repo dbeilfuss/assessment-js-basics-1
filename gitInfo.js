@@ -51,7 +51,8 @@ let gitCloneDefinition =
 */
 
 //CODE HERE
-let gitStatusDefinition = "";
+let gitStatusDefinition =
+  "The command 'git status' is used to check the status of your current repository.  You can see which files have been changed/modified, and which staged/ready for the next commit.  It also tells you if there are any files and folders in the current directory that are not being tracked in your repository.  If these files exist, and you want them tracked, you'll want to add them with the 'git add' command.  'git status' gives you a quick snapshot of the current status of your git, what will change if you order a 'git commit', and what will not.";
 
 //////////////////PROBLEM 6////////////////////
 /*
@@ -64,6 +65,9 @@ let gitStatusDefinition = "";
 
 //CODE HERE
 
+let gitAddDefinition =
+  "I have already referenced 'git add' a couple of times above.  'git add' is a command used to stage files and folders.  Essentially, it tells git 'this is what I want to track.  Any files and folders not tracked will have no version history within the git repository, will not appear in the remote repository, indeed, as far as git is concerned, they do not exist.  This can be helpful if for some reason there are files you do not wish to track - perhaps they contain personal or sensitive data.  It is important though to track everything that is relevant to your project.  It'd be a shame to loose it.";
+
 //////////////////PROBLEM 7////////////////////
 /*
     Create a variable called 'gitCommitDefinition'.  
@@ -75,6 +79,11 @@ let gitStatusDefinition = "";
 
 //CODE HERE
 
+let gitCommitDefinition =
+  "The command 'git commit' is used to create a saved state of any files and folders that are being tracked by git in your git repository.  It creates a point that you can go back to in the future if you need to reference something, or if you have broken the functionality of your app.  Using 'git commit' often can save a huge amount of time, as you can simply revert to where you were instead of having to figure our what you changed.";
+let gitCommitCode =
+  "git commit -am 'added all kinds of amazing code to an already amazing app'";
+
 //////////////////PROBLEM 8////////////////////
 /*
     Create a variable called 'gitPushDefinition'.  
@@ -82,3 +91,5 @@ let gitStatusDefinition = "";
 */
 
 //CODE HERE
+let gitPushDefinition =
+  "The command 'git push' takes your local repository of git commits, and copies it to your remote repository in, for example, Git Hub.  This allows any changes you've made to be saved in an offsight location, and allows for collaboration.  In addition to 'git commit', you should run 'git push' with some regularity.  Imagine accidentally running over your computer and loosing everything.  I hope you recently 'git push'ed your repository to Git Hub.  If so, nothing is truly lost.";
