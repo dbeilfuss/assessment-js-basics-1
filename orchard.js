@@ -90,8 +90,9 @@ console.log(`There were ${totalAcres} total acres of apples picked this week.`);
 
 // CODE HERE
 
-// Calculate the average acres - we simply devide the totalAcres by 7 days a week
-let averageDailyAcres = totalAcres / 7;
+// Calculate the average acres - we simply divide the totalAcres by the total number of days worked
+const daysWorked = fujiAcres.length;
+let averageDailyAcres = totalAcres / daysWorked;
 
 // return the requested solution
 console.log(averageDailyAcres);
