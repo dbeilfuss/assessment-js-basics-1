@@ -27,7 +27,7 @@
     in cents. 
 */
 
-// Apple Acres Picked per Day of Week
+// Apple Acres Picked on each day
 const fujiAcres = [2, 3, 3, 2, 2, 2, 1];
 const galaAcres = [5, 2, 4, 3, 6, 2, 4];
 const pinkAcres = [1, 5, 4, 2, 1, 5, 4];
@@ -59,12 +59,15 @@ let totalAcres = 0;
 // This will allow us to quickly reference all apple acre types at once.
 let allAcres = [fujiAcres, galaAcres, pinkAcres];
 
-// This loop adds up the acres
-// Using a for loop, we look at each Apple type one at a time
+// Using a for loop, we add up the acres of each Apple type one at a time
 for (let i = 0; i < allAcres.length; i++) {
   // Using a second loop, we add we add the acres from each day to totalAcres
-  for (let dayOfWeek = 0; dayOfWeek < allAcres[i].length; dayOfWeek++) {
-    totalAcres = totalAcres + allAcres[i][dayOfWeek];
+  for (
+    let dayOfHarvest = 0;
+    dayOfHarvest < allAcres[i].length;
+    dayOfHarvest++
+  ) {
+    totalAcres = totalAcres + allAcres[i][dayOfHarvest];
   }
 }
 
@@ -72,7 +75,9 @@ for (let i = 0; i < allAcres.length; i++) {
 console.log(totalAcres);
 
 // return the plain english solution
-console.log(`There were ${totalAcres} total acres of apples picked this week.`);
+console.log(
+  `There were ${totalAcres} total acres of apples harvested over the course of ${fujiAcres.length} days.`
+);
 
 ///-------------///
 
@@ -98,7 +103,7 @@ let averageDailyAcres = totalAcres / daysWorked;
 console.log(averageDailyAcres);
 
 // return the plain english solution
-console.log(`An average of ${averageDailyAcres} acres were picked per day.`);
+console.log(`An average of ${averageDailyAcres} acres were harvested per day.`);
 
 ///-------------///
 
@@ -136,6 +141,25 @@ let days = 0;
 
 // CODE HERE
 
+// calculate the number of days it will take to harvest all remaining acres.
+while (acresLeft > 0) {
+  // Add one day remaining
+  days++;
+
+  // Subtract the daily average from the remaining acres
+  acresLeft -= averageDailyAcres;
+}
+
+// return the requested solution
+console.log(days);
+
+// return the plain english solution
+console.log(
+  `At that rate, it will take ${days} days to harvest the remaining acres.`
+);
+
+///-------------///
+
 // PROBLEM 4
 
 /*
@@ -162,9 +186,43 @@ let days = 0;
 
 // CODE HERE
 
-// let fujiTons =
-// let galaTons =
-// let pinkTons =
+let fujiTons = [];
+let galaTons = [];
+let pinkTons = [];
+
+let tonsPerAcre = 6.5;
+
+// Create an array containing each apple type
+let allTons = [fujiTons, galaTons, pinkTons];
+
+// Using a for loop, we calculate the tons of each apple type one at a time
+for (let i = 0; i < allTons.length; i++) {
+  // Using a second loop, and referencing the allAcres variable we created in Problem 1, we will calculate the number of tons harvested each day
+  for (
+    let dayOfHarvest = 0;
+    dayOfHarvest < allAcres[i].length;
+    dayOfHarvest++
+  ) {
+    // Look up how many acres were harvested that day
+    let acres = allAcres[i][dayOfHarvest];
+
+    // calculate how many tons were harvested that day
+    let tons = acres * tonsPerAcre;
+
+    // record the data
+    allTons[i].push(tons);
+  }
+}
+
+// return the requested solution
+console.log(allTons);
+
+// return the plain english solution
+console.log(`Fiji Apples: Tons Harvested each Day: ${fujiTons}`);
+console.log(`Gala Apples: Tons Harvested each Day: ${galaTons}`);
+console.log(`Pink Apples: Tons Harvested each Day: ${pinkTons}`);
+
+///-------------///
 
 // PROBLEM 5
 
@@ -184,9 +242,50 @@ let days = 0;
 
 // CODE HERE
 
-// let fujiPounds =
-// let galaPounds =
-// let pinkPounds =
+let fujiPounds = 0;
+let galaPounds = 0;
+let pinkPounds = 0;
+
+poundsPerTon = 2000;
+
+// Create an array containing each apple type
+let allPounds = [fujiPounds, galaPounds, pinkPounds];
+
+// Using a for loop, we calculate the pounds harvested of each Apple type one at a time
+for (let i = 0; i < allPounds.length; i++) {
+  // Variable to store the total pounds of each apple type
+  let totalPounds = 0;
+
+  // Using a second loop, and referencing the allTons variable we created in Problem 4, we will calculate the number of pounds harvested per apple type
+  for (let dayOfHarvest = 0; dayOfHarvest < allTons[i].length; dayOfHarvest++) {
+    // Look up how many tons were harvested that day
+    let tons = allTons[i][dayOfHarvest];
+
+    // calculate how many pounds were harvested that day
+    let pounds = tons * poundsPerTon;
+
+    // record the day to totalPounds
+    totalPounds += pounds;
+  }
+
+  // Record the data
+  allPounds[i] = totalPounds;
+}
+
+// The directions specifically direct that the data be stored in the variables given above.
+fujiPounds = allPounds[0];
+galaPounds = allPounds[1];
+pinkPounds = allPounds[2];
+
+// return the requested solution
+console.log(allPounds);
+
+// return the plain english solution
+console.log(`Fiji Apples: Pounds Harvested: ${fujiPounds}`);
+console.log(`Gala Apples: Pounds Harvested: ${galaPounds}`);
+console.log(`Pink Apples: Pounds Harvested: ${pinkPounds}`);
+
+///-------------///
 
 // PROBLEM 6
 
@@ -206,9 +305,14 @@ let days = 0;
 
 // CODE HERE
 
-// let fujiProfit =
-// let galaProfit =
-// let pinkProfit =
+let fujiProfit = 0;
+let galaProfit = 0;
+let pinkProfit = 0;
+
+// Create an array containing each apple type
+let allProfit = [fujiProfit, galaProfit, pinkProfit];
+
+///-------------///
 
 // PROBLEM 7
 
